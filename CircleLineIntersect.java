@@ -1,4 +1,4 @@
-public class segment {
+public class CircleLineIntersect {
   public static void main(String[] args) {
     Circle circle = new Circle(x, y, r);
     Line line = new Line(x1, y1, x2, y2);
