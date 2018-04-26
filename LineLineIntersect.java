@@ -1,3 +1,6 @@
+// With help from Alexander Hristov at
+// http://www.ahristov.com/tutorial/geometry-games.html
+
 public class LineLineIntersect {
   public static void main(String[] args) {
     Point P = LLIntersect(1,1,5,6,3,5,6,2);
