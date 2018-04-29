@@ -3,6 +3,8 @@
 
 public class LineLineIntersect {
   public static void main(String[] args) {
+    // Line 1 from (1,1) to (5,6)
+    // Line 2 from (3,5) to (6,2)
     Point P = LLIntersect(1,1,5,6,3,5,6,2);
 
     if (P != null)
