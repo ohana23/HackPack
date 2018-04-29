@@ -40,7 +40,6 @@ public class NetworkFlow {
         //Now do our connection
         for(int i = 0; i < n; i++)
         {
-            System.out.println(i+" "+limit);
             //if out is 0, connect to sink with weight 1
             if(out[i] == 0)
                 this.graph[sink].add(new Edge(i, sink, 1));
