@@ -2,7 +2,7 @@ public class CircleLineIntersect {
   public static void main(String[] args) {
     Circle circle = new Circle(x, y, r);
     Line line = new Line(x1, y1, x2, y2);
-    
+   
     if ( quad(line.a(), line.b(circle), line.c(circle)) ) {
       System.out.println("The line segment intersects the circle.");
     } else {
@@ -13,6 +13,8 @@ public class CircleLineIntersect {
   
 
 // Returns true if line and circle intersect. Otherwise, returns false.
+// This essentially runs the quadratic formula for quadratic equations.
+// (-b +/- sqrt(b^2 - 4-ac)) / 2a
 public static boolean quad(double a, double b, double c) {
   boolean hasSolution = true;
   double discriminant = (b*b) - (4*a*c);
