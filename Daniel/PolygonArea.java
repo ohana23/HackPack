@@ -8,6 +8,7 @@ public class PolygonArea {
   public static void main(String[] args) {
     ArrayList<Point> polygon = new ArrayList<>();
     
+    // Create a polygon by adding points in CLOCKWISE ORDER.
     polygon.add(new Point(3, 4));
     polygon.add(new Point(5, 11));
     polygon.add(new Point(12, 8));
@@ -18,6 +19,8 @@ public class PolygonArea {
     System.out.printf("This polygon's area is %.2f", area);
   }
 
+  // Returns the area of the given polygon, assuming all points are given in
+  // clockwise order.
   public static double shoelaceArea(ArrayList<Point> poly) {
     int N = poly.size();
     double a = 0.0;
