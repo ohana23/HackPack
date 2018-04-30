@@ -5,25 +5,14 @@ public class PointInPolygon {
     public final static double EPSILON = 1e-9;
 
     public static boolean PIP(Point p, Point[] pg) {
-        int l = pg.length;
-        if(l < 3) return false; //three points are required for a Polygon
-
-        //create a point for the infinite line segment
-        Point infP = new Point(oo, p.y);
-        Point intersection;
-
-        //count the number of intersection of the above line with sides of polygon
-        int numInter = 0;
-        for(int i = 0; i < l; i++) {
-            int next = (i + 1) % l;
-            //see if p -> infP intersects polygon[i] -> polygon[next]
-            if((intersection = LLIntersect(p.x, p.y, infP.x, infP.y, pg[i].x, pg[i].y, pg[next].x, pg[next].y)) != null) {
-                System.out.println("Found intersection at "+intersection);
-                numInter++;
-            }
-        }
-
-        System.out.println("There were "+numInter+" intersections");
+        int l = pg.length, numInter = 0;
+        if(l < 3) return false;
+        Point infP = new Point(oo, p.y), intersection;
+        for(int i = 0; i < l; i++)
+            if((intersection = LLIntersect(p.x, p.y, infP.x, infP.y, pg[i].x,
+            pg[i].y, pg[(i + 1) % l].x, pg[(i + 1) % l].y)) != null)
+                if(p.x > intersection.x)
+                    numInter++;
         return (numInter % 2) == 1;
     }
 
@@ -35,14 +24,6 @@ public class PointInPolygon {
         double xi = ((x3-x4)*(x1*y2-y1*x2)-(x1-x2)*(x3*y4-y3*x4))/d;
         double yi = ((y3-y4)*(x1*y2-y1*x2)-(y1-y2)*(x3*y4-y3*x4))/d;
         return (new Point(xi, yi));
-    }
-
-    public static void main(String args[])
-    {
-        Point[] pg = {new Point(0, 0), new Point(10, 0), new Point(10, 10), new Point(0, 10)};
-        Point insideP = new Point(5, 5);
-        Point outsideP = new Point(20, 20);
-        System.out.println("This should be true: "+PIP(insideP, pg));
     }
 }
 
